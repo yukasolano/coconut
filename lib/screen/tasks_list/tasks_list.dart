@@ -1,6 +1,5 @@
-import 'package:coconut/model/task.dart';
 import 'package:coconut/model/tasks_list_model.dart';
-import 'package:coconut/screen/task_item.dart';
+import 'package:coconut/screen/tasks_list/task_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,13 +25,7 @@ class _TasksListState extends State<TasksList> {
               )
           ],
           onReorder: (int oldIndex, int newIndex) {
-            setState(() {
-              if (oldIndex < newIndex) {
-                newIndex -= 1;
-              }
-              final Task item = list.tasks.removeAt(oldIndex);
-              list.tasks.insert(newIndex, item);
-            });
+            list.reorder(oldIndex, newIndex);
           },
         );
       },

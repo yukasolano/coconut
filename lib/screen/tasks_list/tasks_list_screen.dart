@@ -1,8 +1,8 @@
-import 'package:coconut/screen/tasks_list.dart';
+import 'package:coconut/screen/tasks_list/tasks_list.dart';
 import 'package:flutter/material.dart';
 
-class TasksListPage extends StatelessWidget {
-  const TasksListPage({Key? key}) : super(key: key);
+class TasksListScreen extends StatelessWidget {
+  const TasksListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:coconut/model/tasks_list_model.dart';
-import 'package:coconut/screen/new_task.dart';
-import 'package:coconut/screen/tasks_list_page.dart';
+import 'package:coconut/screen/new_task/new_task_screen.dart';
+import 'package:coconut/screen/tasks_list/tasks_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/tasks",
       routes: {
-        "/tasks": (context) => const TasksListPage(),
-        "/new-task": (context) => const NewTaskPage(),
+        "/tasks": (context) => const TasksListScreen(),
+        "/new-task": (context) => const NewTaskScreen(),
       },
     );
   }

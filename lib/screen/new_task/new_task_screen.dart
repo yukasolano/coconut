@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
-import '../model/task.dart';
+import '../../model/task.dart';
 
-class NewTaskPage extends StatefulWidget {
-  const NewTaskPage({Key? key}) : super(key: key);
+class NewTaskScreen extends StatefulWidget {
+  const NewTaskScreen({Key? key}) : super(key: key);
 
   @override
-  _NewTaskPageState createState() => _NewTaskPageState();
+  _NewTaskScreenState createState() => _NewTaskScreenState();
 }
 
-class _NewTaskPageState extends State<NewTaskPage> {
+class _NewTaskScreenState extends State<NewTaskScreen> {
   TextEditingController controller = TextEditingController();
 
   @override
