@@ -1,4 +1,11 @@
+import 'dart:math';
+
+import 'package:coconut/model/tasks_list_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
+
+import '../model/task.dart';
 
 class NewTaskPage extends StatefulWidget {
   const NewTaskPage({Key? key}) : super(key: key);
@@ -15,7 +22,7 @@ class _NewTaskPageState extends State<NewTaskPage> {
     return Scaffold(
         appBar: AppBar(title: const Text('Create new task')),
         body: Center(
-          child: Container(
+          child: SizedBox(
             height: 650,
             width: 375,
             child: Padding(
@@ -24,17 +31,20 @@ class _NewTaskPageState extends State<NewTaskPage> {
                 children: [
                   TextFormField(
                     controller: controller,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Task',
                     ),
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        print("Apertou");
-                        print(controller.text);
+                        Provider.of<TasksListModel>(context, listen: false).add(
+                            Task(
+                                name: controller.text,
+                                checked: false,
+                                id: const Uuid().v4()));
                         Navigator.pop(context);
                       },
-                      child: Text("Create"))
+                      child: const Text("Create"))
                 ],
               ),
             ),

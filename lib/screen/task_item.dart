@@ -1,12 +1,10 @@
-import 'package:coconut/task.dart';
+import 'package:coconut/model/task.dart';
 import 'package:flutter/material.dart';
 
 class TaskItem extends StatefulWidget {
+  final Task task;
 
-  Task task;
-
-  TaskItem({Key? key, required this.task})
-      : super(key: key);
+  const TaskItem({Key? key, required this.task}) : super(key: key);
 
   @override
   State<TaskItem> createState() => _TaskItemState();
@@ -17,7 +15,7 @@ class _TaskItemState extends State<TaskItem> {
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Padding(
-      key: Key('${widget.task.id}'),
+      key: Key(widget.task.id),
       padding: const EdgeInsets.all(5.0),
       child: Container(
           decoration: BoxDecoration(

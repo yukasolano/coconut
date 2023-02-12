@@ -1,4 +1,4 @@
-import 'package:coconut/tasks_list.dart';
+import 'package:coconut/screen/tasks_list.dart';
 import 'package:flutter/material.dart';
 
 class TasksListPage extends StatelessWidget {
