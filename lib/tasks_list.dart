@@ -19,6 +19,9 @@ class _TasksListState extends State<TasksList> {
    Task(name: "Item 5", checked: false, id: 4),
    Task(name: "Item 6", checked: false, id: 5),
    Task(name: "Item 7", checked: false, id: 6),
+   Task(name: "Item 8", checked: false, id: 7),
+   Task(name: "Item 9", checked: false, id: 8),
+   Task(name: "Item 10", checked: false, id: 9),
  ];
 
   @override

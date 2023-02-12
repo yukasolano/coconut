@@ -11,6 +11,12 @@ class TasksListPage extends StatelessWidget {
         title: const Text("My tasks"),
       ),
       body: const TasksList(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed("/new-task");
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
