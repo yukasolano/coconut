@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  coconut-tasks-api:
+    image: yukakyushima/coconut-tasks:1.0
+    container_name: coconut-tasks
+    ports:
+      - 8080:8080
+    networks:
+      - default
