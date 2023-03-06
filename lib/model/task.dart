@@ -7,6 +7,6 @@ class Task {
 
   @override
   String toString() {
-    return "$name $checked";
+    return "$name $checked $id";
   }
 }

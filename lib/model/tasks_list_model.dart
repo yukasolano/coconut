@@ -2,9 +2,11 @@ import 'package:coconut/model/task.dart';
 import 'package:flutter/material.dart';
 
 class TasksListModel extends ChangeNotifier {
-  final List<Task> tasks;
+  late List<Task> tasks;
 
-  TasksListModel({required this.tasks});
+  bool isNotEmpty() {
+    return tasks.isNotEmpty;
+  }
 
   void add(Task task) {
     tasks.add(task);
@@ -18,5 +20,10 @@ class TasksListModel extends ChangeNotifier {
     final Task item = tasks.removeAt(oldIndex);
     tasks.insert(newIndex, item);
     notifyListeners();
+  }
+
+  TasksListModel update({required List<Task> tasks}) {
+    this.tasks = tasks;
+    return this;
   }
 }
