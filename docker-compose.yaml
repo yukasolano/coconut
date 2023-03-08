@@ -1,6 +1,23 @@
 version: '3'
 
 services:
+  mysql-coconut-tasks-api:
+    image: mysql:8.0
+    container_name: mysql-coconut-tasks-api
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: 'coconut'
+      MYSQL_USER: 'coconut'
+      MYSQL_PASSWORD: 'Bk55yc1u0eiqga6e'
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./mysql8:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    networks:
+      - default
+
   coconut-tasks-api:
     image: yukakyushima/coconut-tasks:1.0
     container_name: coconut-tasks
@@ -8,3 +25,5 @@ services:
       - 8080:8080
     networks:
       - default
+    depends_on:
+      - mysql-coconut-tasks-api

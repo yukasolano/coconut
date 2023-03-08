@@ -18,6 +18,6 @@ public class TasksController {
 
     @GetMapping
     public List<TaskDto> getAll() {
-        return taskRepository.getAll().stream().map(TaskDto::toDto).toList();
+        return taskRepository.findAll().stream().map(TaskDto::toDto).toList();
     }
 }
