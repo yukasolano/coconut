@@ -4,6 +4,28 @@ Task manager
 
 Flutter app to manage tasks
 
+# Database
+For connecting to a local database
+
+* Start the server: System Preferences -> MySQL -> Start MySQL Server
+* Add to mysql to path:
+```
+echo $PATH
+export PATH=$PATH:/usr/local/mysql/bin
+mysql --version
+```
+* Create coconut database and a task table
+```
+mysql -u root -p
+CREATE DATABASE coconut;
+CREATE TABLE `coconut`.`task`(`id` binary(16) NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	`checked` bit(1) NOT NULL,
+	PRIMARY KEY (`id`));
+```
+Use ports: 3306:3306 to map database port to localhost
+Remove database container to delete all data
+
 # Coconut tasks api
 
 Create new coconut-tasks service image
@@ -35,4 +57,5 @@ docker-compose up -d
 Stop it
 ```
 docker-compose down
-``
+```
+
