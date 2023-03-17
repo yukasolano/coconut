@@ -19,8 +19,12 @@ services:
       - default
 
   coconut-tasks-api:
-    image: yukakyushima/coconut-tasks:1.3
+    build:
+      context: ./coconut-tasks/
+      dockerfile: Dockerfile
+    image: coconut-tasks
     container_name: coconut-tasks
+    restart: unless-stopped
     ports:
       - 8080:8080
     networks:
