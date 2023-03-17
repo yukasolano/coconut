@@ -1,10 +1,9 @@
 package com.yukakyushima.coconuttasks.repository;
 
 import com.yukakyushima.coconuttasks.model.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import java.util.UUID;
 
-public interface TaskRepository {
-
-    List<Task> getAll();
+public interface TaskRepository extends JpaRepository<Task, UUID> {
 }
