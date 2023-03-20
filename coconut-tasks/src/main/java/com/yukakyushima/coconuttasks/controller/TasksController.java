@@ -1,12 +1,13 @@
 package com.yukakyushima.coconuttasks.controller;
 
 import com.yukakyushima.coconuttasks.controller.dto.TaskDto;
+import com.yukakyushima.coconuttasks.controller.dto.TaskInDto;
 import com.yukakyushima.coconuttasks.model.Task;
 import com.yukakyushima.coconuttasks.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,13 @@ public class TasksController {
     @GetMapping
     public List<TaskDto> findAll() {
         return taskRepository.findAll().stream().map(TaskDto::toDto).toList();
+    }
+
+    @PostMapping
+    public ResponseEntity<TaskDto> create(@RequestBody TaskInDto taskInDto) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(TaskDto.toDto(taskRepository.save(taskInDto.toModel())));
     }
 
     @GetMapping("/sample")
