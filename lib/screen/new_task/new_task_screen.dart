@@ -1,11 +1,7 @@
-import 'dart:math';
-
 import 'package:coconut/model/tasks_list_model.dart';
+import 'package:coconut/service/task_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
-
-import '../../model/task.dart';
 
 class NewTaskScreen extends StatefulWidget {
   const NewTaskScreen({Key? key}) : super(key: key);
@@ -37,12 +33,16 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        Provider.of<TasksListModel>(context, listen: false).add(
-                            Task(
-                                name: controller.text,
-                                checked: false,
-                                id: const Uuid().v4()));
-                        Navigator.pop(context);
+                        TaskService().create(controller.text).then((task) {
+                          Provider.of<TasksListModel>(context, listen: false)
+                              .add(task);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Nova tarefa criada'),
+                            ),
+                          );
+                          Navigator.pop(context);
+                        });
                       },
                       child: const Text("Create"))
                 ],

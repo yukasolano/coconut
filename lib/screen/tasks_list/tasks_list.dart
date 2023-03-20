@@ -28,7 +28,6 @@ class _TasksListState extends State<TasksList> {
             return const Text('Carregando');
           case ConnectionState.done:
             if (snapshot.hasData) {
-              print('done');
               var taskListModel =
                   Provider.of<TasksListModel>(context, listen: true)
                       .update(tasks: snapshot.data!);
